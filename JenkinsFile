@@ -8,7 +8,7 @@ pipeline {
         }
         stage('### clone project ###') {
             steps {
-                bat 'git clone '
+                bat 'git clone https://github.com/amitPrasadGithub/jenkinstest.git'
             }
         }
         stage('### build ###') {
