@@ -18,5 +18,10 @@ pipeline {
                 }
             }
         }
+        stage('### Final ###') {
+            steps {
+                bat 'echo finish'
+            }
+        }
     }
 }
