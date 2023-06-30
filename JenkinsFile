@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    stages {
+        stage('### cleanup ###') {
+            steps {
+                deleteDir()
+            }
+        }
+        stage('### clone project ###') {
+            steps {
+                bat 'git clone '
+            }
+        }
+        stage('### build ###') {
+            steps {
+                dir('jenkinstest') {
+                    bat 'mvn clean install'
+                }
+            }
+        }
+    }
+}
