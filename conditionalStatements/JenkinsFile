@@ -1,0 +1,32 @@
+pipeline {
+    agent any 
+    parameters {
+        booleanParam(
+            name: 'isChangeApproved',
+            defaultValue: false,
+            description: 'Weather change is approved by manger or not'
+        )
+        choice(
+            name: 'targetEnv',
+            choices: ['dev', 'qa', 'uat', 'prod'],
+            description: 'To which env the build should be deployed ?'
+        )
+    }
+    environment {
+        def projectName = 'vbprojects'
+        def isProjectFinished = false
+    }
+    stages {
+        stage('Conditional Statements : if-else') {
+            steps {
+                script {
+                    if(params.targetEnv == 'prod' && params.isChangeApproved == false) {
+                        return
+                    } else {
+                        echo 'SUCCESS'
+                    }
+                }
+            }
+        }
+    }
+}

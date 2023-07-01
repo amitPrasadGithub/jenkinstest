@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    environment {
+        def projectName = 'vbprojects'
+        def projectFinished = false
+    }
+    stages {
+        stage('Access Variables') {
+            steps {
+                echo "Project               : ${projectName} \n"
+                echo "Is project finished   : ${projectFinished} \n"
+            }
+        }
+    }
+}

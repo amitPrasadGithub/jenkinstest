@@ -1,0 +1,20 @@
+pipeline {
+    agent any 
+
+    parameters {
+        booleanParam(name: 'isChangeApproved', defaultValue: false, description: 'Weather change is approved by manager or not ?')
+        string(name: 'projectName', defaultValue: '', description: 'Please enter your project name')
+        text(name: 'Reason for build', defaultValue: '', description: 'Please provide the ticket number')
+        choice(name: 'targetEnv', choices: ['dev', 'qa', 'uat', 'prod'], description: 'which env to deploy to ?')
+    }
+
+    stages {
+        stage('Accessing parameters') {
+            steps {
+                echo "Is change approved    : ${params.isChangeApproved}"
+                echo "project               : ${params.projectName}"
+                echo "Reason                : ${params.'Reason for build'}"
+            }
+        }
+    }
+}
