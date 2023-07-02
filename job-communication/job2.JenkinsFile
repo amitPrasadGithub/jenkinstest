@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+    environment {
+        def projectName = 'vbprojects'
+    }
+    stages {
+        stage("Job 2") {
+            steps {
+                echo "Executing Job 2"
+                build job: 'job3Parameterized', parameters: [[
+                    $class: 'StringParameterValue',
+                    name: 'projectName',
+                    value: 'vsprojects'
+                ]]
+            }
+        }
+    }
+}

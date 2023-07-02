@@ -1,0 +1,35 @@
+pipeline {
+    agent any 
+    environment {
+        def projectName = 'vbprojects'
+        def isProjectFinished = false
+    }
+    stages {
+        stage("Functions") {
+            steps {
+                f1("Passed as method arg")
+                calculateLengthOfString("Amit is cipher")
+
+                script {
+                    def scriptVar = "Script Variable"
+                    echo "Script Var    : ${scriptVar}"
+                }
+            }
+        }
+    }
+}
+
+def f1(String str) {
+    def methodVar = "method variable"
+    echo " projectName  : ${projectName}"
+    echo " Method arg   : ${str}"
+}
+
+def calculateLengthOfString(String str) {
+    def charArray = str.toCharArray()
+    def length = 0
+    for(item in charArray) {
+        length = length + 1
+    }
+    echo "length of ${str}  : ${length}"
+}

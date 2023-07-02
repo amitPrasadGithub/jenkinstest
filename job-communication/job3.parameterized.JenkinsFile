@@ -1,0 +1,14 @@
+pipeline {
+    agent any 
+    parameters {
+        string(name: 'projectName', defaultValue: '', description: 'Please provide projectName')
+    }
+    stages {
+        stage("Job 3 : parameterized") {
+            steps {
+                echo "Executing Job 3"
+                echo "Parameter from previous job   : ${params.projectName}"
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    environment {
+        def projectName = 'vbprojects'
+    }
+    stages {
+        stage('Job Communication') {
+            steps {
+                echo "Executing job 1"
+                build "Job2"
+            }
+        }
+    }
+}
